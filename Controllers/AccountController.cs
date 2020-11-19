@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using riot.Data;
 using riot.Models;
 using riot.Models.AccountViewModels;
@@ -54,6 +55,7 @@ namespace riot.Controllers
         public async Task<IActionResult> Register()
         {
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            ViewData["Regions"] = new SelectList(new List<string> { "NA", "JP", "EU" });
             return View();
         }
 
